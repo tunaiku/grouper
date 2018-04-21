@@ -43,7 +43,7 @@ create a fat jar. First you clean project build
 ```sh
 mvn clean
 ```
-build the project with Gradle pack, which will create a `grouper/build/lib/grouper-all-[version].jar`
+build the project with Gradle pack, which will create a `grouper/target/grouper-build-[version].jar`
 directory with all the dependencies, and also a shell script to run Grouper.
 
 ```sh
@@ -55,7 +55,7 @@ mvn package
 without partition column
 
 ```
-java grouper-bundled-[version].jar \
+java -jar grouper-bundled-[version].jar \
   --output=bigquery-project:database-name \
   --username=my_database_username \
   --password=secret \
@@ -70,7 +70,7 @@ java grouper-bundled-[version].jar \
 with partition column
 
 ```
-java grouper-bundled-[version].jar \
+java -jar grouper-bundled-[version].jar \
   --output=bigquery-project:database-name \
   --username=my_database_username \
   --password=secret \
