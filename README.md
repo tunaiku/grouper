@@ -43,7 +43,7 @@ create a fat jar. First you clean project build
 ```sh
 mvn clean
 ```
-build the project with Gradle pack, which will create a `grouper/target/grouper-build-[version].jar`
+build the project with Gradle pack, which will create a `grouper/target/grouper-bundled-[version].jar`
 directory with all the dependencies, and also a shell script to run Grouper.
 
 ```sh
