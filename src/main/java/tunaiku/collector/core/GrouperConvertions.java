@@ -42,6 +42,7 @@ public class GrouperConvertions {
             .put("DECIMAL", "FLOAT")
             .put("DOUBLE", "FLOAT")
             .put("REAL", "FLOAT")
+            .put("BIT","INTEGER")
             .build();
 
     /**
