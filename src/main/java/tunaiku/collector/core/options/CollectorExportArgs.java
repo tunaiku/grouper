@@ -27,7 +27,7 @@ public class CollectorExportArgs {
     }
 
     public DateTime parseDateTime(String input){
-        String pattern = "yyyy-mm-dd HH:mm:ss";
+        String pattern = "yyyy-MM-dd HH:mm:ss";
         return DateTime.parse(input, DateTimeFormat.forPattern(pattern));
     }
 
