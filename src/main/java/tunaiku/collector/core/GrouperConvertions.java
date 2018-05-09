@@ -21,7 +21,9 @@ public class GrouperConvertions {
     private static final int MAX_DIGITS_BIGINT = 19;
     private static final Map<String, String> jdbcToBqTypeMap = ImmutableMap.<String, String>builder()
             .put("NVARCHAR", "STRING")
+            .put("LONGVARCHAR", "STRING")
             .put("VARCHAR", "STRING")
+            .put("CHAR", "STRING")
             .put("ALPHANUM", "STRING")
             .put("SHORTTEXT", "STRING")
             .put("BLOB", "STRING")

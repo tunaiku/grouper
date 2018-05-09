@@ -113,21 +113,21 @@
 
 
     <profiles>
-        <profile>
-            <id>direct-runner</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <!-- Makes the DirectRunner available when running a pipeline. -->
-            <dependencies>
-                <dependency>
-                    <groupId>org.apache.beam</groupId>
-                    <artifactId>beam-runners-direct-java</artifactId>
-                    <version>${beam.version}</version>
-                    <scope>runtime</scope>
-                </dependency>
-            </dependencies>
-        </profile>
+        <!--<profile>-->
+            <!--<id>direct-runner</id>-->
+            <!--<activation>-->
+                <!--<activeByDefault>true</activeByDefault>-->
+            <!--</activation>-->
+            <!--&lt;!&ndash; Makes the DirectRunner available when running a pipeline. &ndash;&gt;-->
+            <!--<dependencies>-->
+                <!--<dependency>-->
+                    <!--<groupId>org.apache.beam</groupId>-->
+                    <!--<artifactId>beam-runners-direct-java</artifactId>-->
+                    <!--<version>${beam.version}</version>-->
+                    <!--<scope>runtime</scope>-->
+                <!--</dependency>-->
+            <!--</dependencies>-->
+        <!--</profile>-->
 
         <profile>
             <id>apex-runner</id>
@@ -159,53 +159,58 @@
             </dependencies>
         </profile>
 
-        <profile>
-            <id>dataflow-runner</id>
-            <!-- Makes the DataflowRunner available when running a pipeline. -->
-            <dependencies>
-                <dependency>
-                    <groupId>org.apache.beam</groupId>
-                    <artifactId>beam-runners-google-cloud-dataflow-java</artifactId>
-                    <version>${beam.version}</version>
-                    <scope>runtime</scope>
-                </dependency>
-            </dependencies>
-        </profile>
-
-        <profile>
-            <id>spark-runner</id>
-            <!-- Makes the SparkRunner available when running a pipeline. Additionally,
-                 overrides some Spark dependencies to Beam-compatible versions. -->
-            <dependencies>
-                <dependency>
-                    <groupId>org.apache.beam</groupId>
-                    <artifactId>beam-runners-spark</artifactId>
-                    <version>${beam.version}</version>
-                    <scope>runtime</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.apache.spark</groupId>
-                    <artifactId>spark-streaming_2.10</artifactId>
-                    <version>1.6.2</version>
-                    <scope>runtime</scope>
-                    <exclusions>
-                        <exclusion>
-                            <groupId>org.slf4j</groupId>
-                            <artifactId>jul-to-slf4j</artifactId>
-                        </exclusion>
-                    </exclusions>
-                </dependency>
-                <dependency>
-                    <groupId>com.fasterxml.jackson.module</groupId>
-                    <artifactId>jackson-module-scala_2.10</artifactId>
-                    <version>2.7.2</version>
-                    <scope>runtime</scope>
-                </dependency>
-            </dependencies>
-        </profile>
+        <!--<profile>-->
+            <!--<id>spark-runner</id>-->
+            <!--&lt;!&ndash; Makes the SparkRunner available when running a pipeline. Additionally,-->
+                 <!--overrides some Spark dependencies to Beam-compatible versions. &ndash;&gt;-->
+            <!--<dependencies>-->
+                <!--<dependency>-->
+                    <!--<groupId>org.apache.beam</groupId>-->
+                    <!--<artifactId>beam-runners-spark</artifactId>-->
+                    <!--<version>${beam.version}</version>-->
+                    <!--<scope>runtime</scope>-->
+                <!--</dependency>-->
+                <!--<dependency>-->
+                    <!--<groupId>org.apache.spark</groupId>-->
+                    <!--<artifactId>spark-streaming_2.10</artifactId>-->
+                    <!--<version>1.6.2</version>-->
+                    <!--<scope>runtime</scope>-->
+                    <!--<exclusions>-->
+                        <!--<exclusion>-->
+                            <!--<groupId>org.slf4j</groupId>-->
+                            <!--<artifactId>jul-to-slf4j</artifactId>-->
+                        <!--</exclusion>-->
+                    <!--</exclusions>-->
+                <!--</dependency>-->
+                <!--<dependency>-->
+                    <!--<groupId>com.fasterxml.jackson.module</groupId>-->
+                    <!--<artifactId>jackson-module-scala_2.10</artifactId>-->
+                    <!--<version>2.7.2</version>-->
+                    <!--<scope>runtime</scope>-->
+                <!--</dependency>-->
+            <!--</dependencies>-->
+        <!--</profile>-->
     </profiles>
 
     <dependencies>
+
+        <!-- Makes the DirectRunner available when running a pipeline. -->
+        <dependency>
+            <groupId>org.apache.beam</groupId>
+            <artifactId>beam-runners-direct-java</artifactId>
+            <version>${beam.version}</version>
+        </dependency>
+        <!-- Makes the DataflowRunner available when running a pipeline. -->
+        <dependency>
+            <groupId>org.apache.beam</groupId>
+            <artifactId>beam-runners-google-cloud-dataflow-java</artifactId>
+            <version>${beam.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.beam</groupId>
+            <artifactId>beam-runners-spark</artifactId>
+            <version>${beam.version}</version>
+        </dependency>
         <!-- Adds a dependency on the Beam SDK. -->
         <dependency>
             <groupId>org.apache.beam</groupId>
