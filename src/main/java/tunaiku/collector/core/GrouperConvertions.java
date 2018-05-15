@@ -44,7 +44,7 @@ public class GrouperConvertions {
             .put("DECIMAL", "FLOAT")
             .put("DOUBLE", "FLOAT")
             .put("REAL", "FLOAT")
-            .put("BIT","INTEGER")
+            .put("BIT","STRING")
             .build();
 
     /**
@@ -158,6 +158,7 @@ public class GrouperConvertions {
             String normalizeColumnName = normalizeForConvertion(columnName);
             int columnType = meta.getColumnType(i);
             String typeName = JDBCType.valueOf(columnType).getName();
+
             schemaEntry.setName(normalizeColumnName);
             if(jdbcToBqTypeMap.containsKey(typeName))
                 schemaEntry.setType(jdbcToBqTypeMap.get(typeName));
