@@ -8,10 +8,7 @@ import org.slf4j.LoggerFactory;
 
 import java.nio.ByteBuffer;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static java.sql.Types.*;
 
@@ -122,7 +119,53 @@ public class GrouperConvertions {
     }
 
     String normalizeForConvertion(String input) {
-        return input.replaceAll("[^A-Za-z0-9_]", "_");
+        //System.out.println("Hasil Input =" + input);
+
+        String response = input.replaceAll("[^A-Za-z0-9_]", "_");
+
+
+        String[] restrict_bq = new String[]{"0", "1", "2","3","4","5","6","7","8","9"};
+        // Convert String Array to List
+        List<String> list = Arrays.asList(restrict_bq);
+        if(list.contains(response.substring(0,1))){
+            //System.out.println("Field Resticted = " + response);
+            response = ConvertNumerictoCharacter(response);
+        }
+
+        //System.out.println("Hasil Output =" + response );
+        return response;
+    }
+
+
+    private String ConvertNumerictoCharacter(String str) {
+        String response = str.substring(1);
+        String convert  = "";
+        switch (str.substring(0,1)) {
+            case "0" :
+                convert = "zero";break;
+            case "1" :
+                convert = "one";break;
+            case "2" :
+                convert = "two";break;
+            case "3" :
+                convert = "three";break;
+            case "4" :
+                convert = "four";break;
+            case "5" :
+                convert = "five";break;
+            case "6" :
+                convert = "six";break;
+            case "7" :
+                convert = "seven";break;
+            case "8" :
+                convert = "eight";break;
+            case "9" :
+                convert = "nine";break;
+            default :
+                convert = "null";break;
+        }
+
+        return convert+response;
     }
 
     public List<TableFieldSchema> createSchemaByReadingOneRow (Connection connection, String tableName) throws SQLException {
